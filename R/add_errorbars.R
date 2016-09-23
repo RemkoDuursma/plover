@@ -1,4 +1,3 @@
-
 #' Adds error bars to a plot
 #' 
 #' @description Yet another function that adds error bars. The user must specify the length of the error bars.
@@ -15,7 +14,7 @@
 #' x <- rnorm(20)
 #' y <- x + rnorm(20)
 #' se <- runif(20, 0.2,0.4)
-#' plot(x,y,pch=21,bg="white",panel.first=adderrorbars(x,y,se,direction="updown", col="darkgrey"))
+#' plot(x,y,pch=21,bg="white",panel.first=add_errorbars(x,y,se,direction="updown", col="darkgrey"))
 #' @export
 add_errorbars <- function(x,y,SE,direction,barlen=0.04,...){
   

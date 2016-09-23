@@ -1,5 +1,8 @@
 #' Simple logarithmic axes function
 #' @description Based on magaxis, with some modifications. Unlike \code{\link{magaxis}}, the labels are always of the form 10^i, where magaxis sometimes uses 10^i, other times it uses 10,100, etc., depending on the range. 
+#' @param side Which side to add axes to (numbering as for \code{\link{axis}})
+#' @param logged Which axes are already log-transformed (numbering as for \code{side})
+#' @param labels If TRUE, add axis numeric labels
 #' @export
 log10axes <- function(side=1:2, logged=NULL, labels=TRUE){
   

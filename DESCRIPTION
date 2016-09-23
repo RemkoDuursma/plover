@@ -3,4 +3,11 @@ Title: A Collection of Convenient Plotting Functions
 Version: 0.1
 Authors@R: person("Remko", "Duursma", email = "remkoduursma@gmail.com", role = c("aut", "cre"))
 Description: This package contains a few convenient base plotting functions.
-Depends: R (>= 3.3.0), magicaxis, mgcv, scales, doBy
+Depends:
+    R (>= 3.3.0),
+    magicaxis,
+    mgcv,
+    scales,
+    doBy
+Suggests: wesanderson
+RoxygenNote: 5.0.1

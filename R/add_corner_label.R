@@ -1,6 +1,14 @@
 #' Simple function for placing text labels in the corner of a figure.
 #' @description Designed for labelling figures in the corner with 'A', 'B', and so on. Finds the coordinates for you.
 #' @export
+#' @examples
+#' 
+#' o <- par(mfrow=c(1,2))
+#' with(iris, {
+#'   plot(Sepal.Width, Sepal.Length, panel.last=add_corner_label("A","topleft"))
+#'   plot(Petal.Width, Petal.Length, panel.last=add_corner_label("B","topleft"))
+#'   })
+#' par(o)
 add_corner_label <- function(txt, where, inset=0.08, inset.x=inset, inset.y=inset, log.y=FALSE, log.x=FALSE,...){
   u <- par()$usr
   if(grepl("left",where))x <- u[1] + inset.x*(u[2]-u[1])
