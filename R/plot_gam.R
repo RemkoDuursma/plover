@@ -38,6 +38,7 @@ plot_gam <- function(x,y,g=NULL,data,
                        bandcolor=alpha("lightgrey",0.7),
                        plotit=TRUE, add=FALSE,
                        npred=101,
+                       lwd=2,
                        ...){
 
   fittype <- match.arg(fittype)
@@ -148,14 +149,14 @@ plot_gam <- function(x,y,g=NULL,data,
         if(!inherits(fits[[i]], "try-error")){
           p <- predict(fits[[i]],nd,se.fit=TRUE)
           if(band)addpoly(nd$X, p$fit-2*p$se.fit, p$fit+2*p$se.fit, col=bandcolor[i])
-          lines(nd$X, p$fit, col=linecols[i], lwd=2)
+          lines(nd$X, p$fit, col=linecols[i], lwd=lwd)
           box()
         }
       }
       if(fittype == "lm"){
         pval <- summary(fits[[i]])$coefficients[2,4]
         LTY <- if(pval < 0.05)1 else 5
-        add_regres_line(fits[[i]], col=linecols[i], lwd=2, lty=LTY, band=band)
+        add_regres_line(fits[[i]], col=linecols[i], lwd=lwd, lty=LTY, band=band)
         box()
       }
     }

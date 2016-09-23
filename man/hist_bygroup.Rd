@@ -17,8 +17,12 @@ A simple function to plot histograms by group, and overlay them. This is notorio
 library(wesanderson)
 hist_bygroup(Petal.Length, Species, iris, col=wes_palette("Chevalier"), breaks=50)
 
-hist_bygroup(Petal.Length, Species, iris, col=wes_palette("Chevalier"), 
-group.expression=abline(v=mean(Y)))
-)
+hist_bygroup(Petal.Length, Species, iris, col=wes_palette("Chevalier"), breaks=50,
+group.expression=abline(v=mean(Y), col=col.cur, lwd=2))
+
+hist_bygroup(Petal.Length, Species, iris, col=wes_palette("Chevalier"), what="density",
+breaks=40,
+group.expression=curve(dnorm(x, mean(Y), sd=sd(Y)), add=T))
+
 }
 

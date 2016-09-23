@@ -10,4 +10,13 @@ add_corner_label(txt, where, inset = 0.08, inset.x = inset,
 \description{
 Designed for labelling figures in the corner with 'A', 'B', and so on. Finds the coordinates for you.
 }
+\examples{
+
+o <- par(mfrow=c(1,2))
+with(iris, {
+  plot(Sepal.Width, Sepal.Length, panel.last=add_corner_label("A","topleft"))
+  plot(Petal.Width, Petal.Length, panel.last=add_corner_label("B","topleft"))
+  })
+par(o)
+}
 

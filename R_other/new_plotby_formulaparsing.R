@@ -52,39 +52,63 @@ e
 }
 
 
-plotBy <- function(formula, data, how=c("colour","panel")){
+plotBy <- function(formula, data, how=c("colour","panel"), fit=c("none","gam","lm"), ...){
   
   how <- match.arg(how)
+  fit <- match.arg(fit)
+  
+  # List with every component a dataframe for the left-hand variables in the formula
   e <- parse_formula(formula, data)
   
   for(i in 1:length(e)){
-   plot_group(e[[i]],how) 
+   plot_group(e[[i]],how,fit, ...) 
   }
   
 }
 
 
-plot_group <- function(x, how){
+plot_group <- function(x, how, fit, ...){
   
-  X <- split(x$right, x$condition[[1]])
-  Y <- split(x$left, x$condition[[1]])
-  
-  if(how == "colour"){
-    plot(x$right, x$left, type='n')
-    for(i in 1:length(X)){
-      points(X[[i]], Y[[i]], col=palette()[i])
+  if(fit != "none"){
+    dat <- x[c("left","right","condition")]
+    dat$condition <- dat$condition[[1]]
+    dat <- as.data.frame(dat)
+    plot_gam(right, left, condition, data=dat, fittype=fit, ...)
+  } else {
+    
+    X <- split(x$right, x$condition[[1]])
+    Y <- split(x$left, x$condition[[1]])
+    
+    if(how == "colour"){
+      plot(x$right, x$left, type='n')
+      for(i in 1:length(X)){
+        points(X[[i]], Y[[i]], col=palette()[i])
+      }
     }
-  }
-  if(how == "panel"){
-    for(i in 1:length(X)){
-      plot(X[[i]], Y[[i]], col=palette()[i])
+    if(how == "panel"){
+      for(i in 1:length(X)){
+        plot(X[[i]], Y[[i]], col=palette()[i])
+      }
     }
   }
 }
 
 
+par(mfrow=c(1,2))
+plotBy(log(Sepal.Length) + Petal.Length ~ Sepal.Width | Species, data=iris, fit="gam")
 
+par(mfrow=c(1,2))
+plotBy(log(Sepal.Length) + Petal.Length ~ Sepal.Width | Species, data=iris, fit="lm")
+
+par(mfrow=c(1,2))
 plotBy(log(Sepal.Length) + Petal.Length ~ Sepal.Width | Species, data=iris, how="colour")
+
+par(mfrow=c(2,3))
 plotBy(log(Sepal.Length) + Petal.Length ~ Sepal.Width | Species, data=iris, how="panel")
+
+
+par(mfrow=c(1,1))
+plotBy(weight ~ Time|Chick, fit="gam", data=ChickWeight, kgam=5, linecols="black", band=F, lwd=1)
+
 
 

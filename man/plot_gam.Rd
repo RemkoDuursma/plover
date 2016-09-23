@@ -8,7 +8,7 @@ plot_gam(x, y, g = NULL, data, fittype = c("gam", "lm"), kgam = 4,
   R = NULL, randommethod = c("gamm", "aggregate"), log = "",
   axes = TRUE, fitoneline = FALSE, pointcols = NULL, linecols = NULL,
   xlab = NULL, ylab = NULL, band = TRUE, bandcolor = alpha("lightgrey",
-  0.7), plotit = TRUE, add = FALSE, npred = 101, ...)
+  0.7), plotit = TRUE, add = FALSE, npred = 101, lwd = 2, ...)
 }
 \arguments{
 \item{x}{Variable for X axis (unquoted)}

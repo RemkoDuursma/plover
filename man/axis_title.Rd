@@ -7,10 +7,11 @@
 axis_title(text, side, ...)
 }
 \description{
-A simple wrapper for \code{\link{mtext}}, making sure that the character size is adjusted to be identical to the character size used on the ordinary axes. This is especially handy when plotting multiple panels (via the use of \code{par(mfrow=...)}), because axis labels are automatically adjusted in that case (see entry for \code{mfrow} in \code{\link{par}}).
+A simple wrapper for \code{\link{mtext}}, making sure that the character size is adjusted to be identical to the character size used on the ordinary axes, and respecting the setting for \code{mgp} in \code{\link{par}}. This is especially handy when plotting multiple panels (via the use of \code{par(mfrow=...)}), because axis labels are automatically adjusted in that case (see entry for \code{mfrow} in \code{\link{par}}).
 }
 \examples{
 # Plot a second axis
+set.seed(1)
 x <- rnorm(100)
 y <- x + rnorm(100)
 z <- rnorm(100) - x
