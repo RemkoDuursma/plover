@@ -8,6 +8,8 @@ Depends:
     magicaxis,
     mgcv,
     scales,
-    doBy
+    doBy,
+    lattice,
+    mosaic
 Suggests: wesanderson
 RoxygenNote: 5.0.1
